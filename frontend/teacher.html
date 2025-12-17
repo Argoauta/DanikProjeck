@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель преподавателя</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>Панель преподавателя</h1>
+                <div class="user-info">
+                    Пользователь: <span id="username"></span>
+                </div>
+            </div>
+            <button onclick="logout()">Выйти</button>
+        </div>
+        
+        <div>
+            <button onclick="showCreateTestModal()">Создать новый тест</button>
+            <button onclick="showStatistics()" class="btn-secondary">Статистика</button>
+            <button onclick="showAllResults()" class="btn-success">Все результаты</button>
+        </div>
+        
+        <div id="testsView">
+            <h2>Мои тесты</h2>
+            <div id="testsList" class="tests-grid"></div>
+        </div>
+        
+        <div id="statisticsView" class="hidden">
+            <button onclick="hideStatistics()">← Назад</button>
+            <h2>Статистика</h2>
+            <div class="stats-grid" id="statsCards"></div>
+            <div class="table-container">
+                <table id="statsTable">
+                    <thead>
+                        <tr>
+                            <th>Тест</th>
+                            <th>Попыток</th>
+                            <th>Средний балл</th>
+                            <th>Средний %</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div id="resultsView" class="hidden">
+            <button onclick="hideResults()">← Назад</button>
+            <h2>Все результаты</h2>
+            <div class="table-container">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Студент</th>
+                            <th>Тест</th>
+                            <th>Результат</th>
+                            <th>Дата</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно создания теста -->
+    <div id="createTestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Создать тест</h2>
+                <button class="close-btn" onclick="closeCreateTestModal()">×</button>
+            </div>
+            
+            <div class="form-group">
+                <label for="testTitle">Название теста</label>
+                <input type="text" id="testTitle" placeholder="Введите название">
+            </div>
+            
+            <div class="form-group">
+                <label for="testDescription">Описание</label>
+                <textarea id="testDescription" placeholder="Введите описание"></textarea>
+            </div>
+            
+            <h3>Вопросы</h3>
+            <div id="questionsContainer"></div>
+            
+            <button onclick="addQuestion()" class="add-question-btn">Добавить вопрос</button>
+            <br><br>
+            <button onclick="saveTest()" class="btn-success">Сохранить тест</button>
+            <div id="createTestError" class="error"></div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно редактирования теста -->
+    <div id="editTestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Редактировать тест</h2>
+                <button class="close-btn" onclick="closeEditTestModal()">×</button>
+            </div>
+            
+            <div class="form-group">
+                <label for="editTestTitle">Название теста</label>
+                <input type="text" id="editTestTitle" placeholder="Введите название">
+            </div>
+            
+            <div class="form-group">
+                <label for="editTestDescription">Описание</label>
+                <textarea id="editTestDescription" placeholder="Введите описание"></textarea>
+            </div>
+            
+            <h3>Вопросы</h3>
+            <div id="editQuestionsContainer"></div>
+            
+            <button onclick="addEditQuestion()" class="add-question-btn">Добавить вопрос</button>
+            <br><br>
+            <button onclick="updateTest()" class="btn-success">Сохранить изменения</button>
+            <div id="editTestError" class="error"></div>
+        </div>
+    </div>
+    
+    <script src="js/teacher.js"></script>
+</body>
+</html>

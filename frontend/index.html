@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система тестирования - Вход</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container auth-container">
+        <h1>Система тестирования</h1>
+        
+        <div id="loginForm">
+            <h2>Вход</h2>
+            <div class="form-group">
+                <label for="loginUsername">Имя пользователя</label>
+                <input type="text" id="loginUsername" placeholder="Введите имя пользователя">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Пароль</label>
+                <input type="password" id="loginPassword" placeholder="Введите пароль">
+            </div>
+            <button onclick="login()">Войти</button>
+            <p style="text-align: center; margin-top: 20px;">
+                Нет аккаунта? <a href="#" onclick="showRegister(); return false;">Зарегистрироваться</a>
+            </p>
+            <div id="loginError" class="error"></div>
+        </div>
+        
+        <div id="registerForm" style="display: none;">
+            <h2>Регистрация</h2>
+            <div class="form-group">
+                <label for="registerUsername">Имя пользователя</label>
+                <input type="text" id="registerUsername" placeholder="Введите имя пользователя">
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Пароль</label>
+                <input type="password" id="registerPassword" placeholder="Введите пароль">
+            </div>
+            <div class="form-group">
+                <label for="registerRole">Роль</label>
+                <select id="registerRole">
+                    <option value="student">Студент</option>
+                    <option value="teacher">Преподаватель</option>
+                </select>
+            </div>
+            <button onclick="register()">Зарегистрироваться</button>
+            <p style="text-align: center; margin-top: 20px;">
+                Уже есть аккаунт? <a href="#" onclick="showLogin(); return false;">Войти</a>
+            </p>
+            <div id="registerError" class="error"></div>
+            <div id="registerSuccess" class="success"></div>
+        </div>
+    </div>
+    
+    <script src="js/auth.js"></script>
+</body>
+</html>
